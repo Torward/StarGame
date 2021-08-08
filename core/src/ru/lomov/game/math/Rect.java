@@ -38,10 +38,6 @@ public class Rect {
     }
 
 
-    public Vector2 getPos() {
-        return pos;
-    }
-
     public float getHalfWidth() {
         return halfWidth;
     }
@@ -65,7 +61,7 @@ public class Rect {
     }
 
     public void setWidth(float width) {
-        this.halfHeight = width / 2f;
+        this.halfWidth = width / 2f;
     }
 
     public void set(Rect from) {

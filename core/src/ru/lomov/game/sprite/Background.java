@@ -7,6 +7,7 @@ import ru.lomov.game.base.Sprite;
 import ru.lomov.game.math.Rect;
 
 public class Background extends Sprite {
+    private final float SIZE= 1f;
 
     public Background(Texture texture) {
         super(new TextureRegion(texture));
@@ -14,7 +15,7 @@ public class Background extends Sprite {
 
     @Override
     public void resize(Rect worldBounds) {
-        setHeightProportion(worldBounds.getHeight());
+        setHeightProportion(SIZE * worldBounds.getHeight());
         pos.set(worldBounds.pos);
     }
 }
