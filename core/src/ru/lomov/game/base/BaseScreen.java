@@ -1,6 +1,7 @@
 package ru.lomov.game.base;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -32,7 +33,7 @@ public class BaseScreen implements Screen, InputProcessor {
         screenBounds = new Rect();
         worldBounds = new Rect();
         glBounds = new Rect(0, 0, 1f, 1f);
-        worldToGl= new Matrix4();
+        worldToGl = new Matrix4();
         screenToWorld = new Matrix3();
         touch = new Vector2();
     }
@@ -52,12 +53,13 @@ public class BaseScreen implements Screen, InputProcessor {
         float aspect = width / (float) height;
         worldBounds.setHeight(1f);
         worldBounds.setWidth(1f * aspect);
-        MatrixUtils.calcTransitionMatrix(worldToGl,worldBounds, glBounds);
+        MatrixUtils.calcTransitionMatrix(worldToGl, worldBounds, glBounds);
         batch.setProjectionMatrix(worldToGl);
         resize(worldBounds);
         MatrixUtils.calcTransitionMatrix(screenToWorld, screenBounds, worldBounds);
 
     }
+
     public void resize(Rect worldBounds) {
         System.out.println("worldBounds: width= " + worldBounds.getWidth() + "height = " + worldBounds.getHeight());
     }
@@ -84,9 +86,24 @@ public class BaseScreen implements Screen, InputProcessor {
         batch.dispose();
     }
 
+
     @Override
     public boolean keyDown(int keycode) {
         System.out.println("keyDown keycode= " + keycode);
+//        switch (keycode) {
+//            case Input.Keys.UP:
+//                touch.y += 0.1f;
+//                break;
+//            case Input.Keys.DOWN:
+//                touch.y -= 0.1f;
+//                break;
+//            case Input.Keys.LEFT:
+//                touch.x -= 0.1f;
+//                break;
+//            case Input.Keys.RIGHT:
+//                touch.x +=0.1f;
+//                break;
+//        }
         return false;
     }
 
@@ -106,14 +123,16 @@ public class BaseScreen implements Screen, InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         System.out.println("touchDown screenXr = " + screenX + "screenY =" + screenY + "pointer =" + pointer + "button = " + button);
         touch.set(screenX, Gdx.graphics.getHeight() - screenY).mul(screenToWorld);
-        touchDown(touch,pointer,button);
+        touchDown(touch, pointer, button);
 
         return false;
     }
+
     public boolean touchDown(Vector2 touch, int pointer, int button) {
         System.out.println("touchDown touchX = " + touch.x + "touchY =" + touch.y + "pointer =" + pointer + "button = " + button);
         return false;
     }
+
     public boolean touchUp(Vector2 touch, int pointer, int button) {
         System.out.println("touchUp  touchX = " + touch.x + "touchY =" + touch.y + "pointer =" + pointer + "button = " + button);
         return false;
@@ -131,7 +150,12 @@ public class BaseScreen implements Screen, InputProcessor {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         System.out.println("touchDragged screenXr = " + screenX + "screenY =" + screenY + "pointer =" + pointer);
         touch.set(screenX, Gdx.graphics.getHeight() - screenY).mul(screenToWorld);
-        touchDragged(touch,pointer);
+        touchDragged(touch, pointer);
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
         return false;
     }
 
@@ -140,8 +164,7 @@ public class BaseScreen implements Screen, InputProcessor {
         return false;
     }
 
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public boolean mouseMoved(Vector2 touch) {
 
         return false;
     }

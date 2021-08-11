@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import ru.lomov.game.math.Rect;
+import ru.lomov.game.utils.Regions;
 
 public class Sprite extends Rect {
 
@@ -16,6 +17,10 @@ public class Sprite extends Rect {
     public Sprite(TextureRegion region) {
         regions = new TextureRegion[1];
         regions[0] = region;
+    }
+    public Sprite(TextureRegion region, int rows, int cols, int frames) {
+        regions = Regions.split(region, rows, cols, frames);
+
     }
     public void  setHeightProportion(float height){
         setHeight(height);
@@ -39,6 +44,13 @@ public class Sprite extends Rect {
 
     public void resize(Rect worldBounds){
 
+    }
+    public boolean keyDown(int keycode) {
+        return false;
+    }
+    public boolean mouseMoved(Vector2 touch) {
+
+        return false;
     }
     public boolean touchDown(Vector2 touch, int pointer, int button) {
         return false;
