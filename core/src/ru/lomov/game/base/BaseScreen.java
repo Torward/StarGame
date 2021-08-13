@@ -17,7 +17,7 @@ public class BaseScreen implements Screen, InputProcessor {
     protected SpriteBatch batch;
     private Rect screenBounds; // координаты в пикселях
     private Rect worldBounds; // система к которой приходим
-    private Rect gldBounds;  // координатная сетка
+    private Rect glBounds;  // координатная сетка
 
     private Matrix4 worldToGl;
     private Matrix3 screenToWorld;
@@ -31,7 +31,7 @@ public class BaseScreen implements Screen, InputProcessor {
         batch = new SpriteBatch();
         screenBounds = new Rect();
         worldBounds = new Rect();
-        gldBounds = new Rect(0, 0, 1f, 1f);
+        glBounds = new Rect(0, 0, 1f, 1f);
         worldToGl= new Matrix4();
         screenToWorld = new Matrix3();
         touch = new Vector2();
@@ -39,7 +39,7 @@ public class BaseScreen implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(1, 0, 0, 0);
+        ScreenUtils.clear(1, 0, 0, 1);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class BaseScreen implements Screen, InputProcessor {
         float aspect = width / (float) height;
         worldBounds.setHeight(1f);
         worldBounds.setWidth(1f * aspect);
-        MatrixUtils.calcTransitionMatrix(worldToGl,worldBounds, gldBounds);
+        MatrixUtils.calcTransitionMatrix(worldToGl,worldBounds, glBounds);
         batch.setProjectionMatrix(worldToGl);
         resize(worldBounds);
         MatrixUtils.calcTransitionMatrix(screenToWorld, screenBounds, worldBounds);

@@ -22,6 +22,9 @@ public class Sprite extends Rect {
         float aspect =  regions[frame].getRegionWidth()/ (float)regions[frame].getRegionHeight();
         setWidth(height*aspect);
     }
+    public void update(float delta){
+
+    }
 
     public  void draw(SpriteBatch batch){
         batch.draw(
