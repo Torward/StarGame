@@ -1,6 +1,6 @@
 android {
-    buildToolsVersion "30.0.2"
-    compileSdkVersion 30
+    buildToolsVersion "31.0.0"
+    compileSdkVersion 31
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -17,9 +17,9 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "ru.lomov.game"
-        minSdkVersion 19
-        targetSdkVersion 30
+        applicationId "ru.gb"
+        minSdkVersion 14
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -86,7 +86,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'ru.lomov.game/ru.lomov.game.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'ru.gb/ru.gb.AndroidLauncher'
 }
 
 eclipse.project.name = appName + "-android"

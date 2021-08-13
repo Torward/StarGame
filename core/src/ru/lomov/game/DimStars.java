@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import ru.lomov.game.screen.GameScreen;
 import ru.lomov.game.screen.MenuScreen;
 
 public class DimStars extends Game {

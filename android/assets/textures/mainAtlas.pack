@@ -10,3 +10,10 @@ hero_ship
   orig: 115, 70
   offset: 0, 0
   index: -1
+ullet_green
+  rotate: false
+  xy: 118, 7
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

@@ -104,12 +104,14 @@ public class BaseScreen implements Screen, InputProcessor {
 //                touch.x +=0.1f;
 //                break;
 //        }
+        keyDown(keycode);
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
         System.out.println("keyUp keycode= " + keycode);
+
         return false;
     }
 

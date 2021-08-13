@@ -12,7 +12,11 @@ public class Sprite extends Rect {
     protected float angle;
     protected float scale = 1f;
     protected TextureRegion[] regions;
+    protected boolean destroyed;
     protected int frame; // указывает на текущий объект массива регионов
+
+    public Sprite() {
+    }
 
     public Sprite(TextureRegion region) {
         regions = new TextureRegion[1];
@@ -76,5 +80,16 @@ public class Sprite extends Rect {
 
     public void setScale(float scale) {
         this.scale = scale;
+    }
+
+    public void destroy(){
+        destroyed = true;
+    }
+    public void flushDestroy(){
+        destroyed = false;
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
     }
 }
