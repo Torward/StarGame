@@ -1,6 +1,9 @@
 package ru.lomov.game.screen;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
@@ -28,6 +31,9 @@ public class GameScreen extends BaseScreen {
     private Star[] stars;
     private MainShip mainShip;
     private BulletPool bulletPool;
+    //звуковое оформление
+    private Sound shootSound;
+    private Music theme;
 
 
 
@@ -38,6 +44,8 @@ public class GameScreen extends BaseScreen {
         background = new Background(bg);
         atlas = new TextureAtlas("textures/menuAtlas.pack");
         atlasMain = new TextureAtlas("textures/mainAtlas.pack");
+        theme = Gdx.audio.newMusic(Gdx.files.internal("sounds/main_screen_music.mp3"));
+        shootSound = Gdx.audio.newSound(Gdx.files.internal("sounds/shoot.mp3"));
 
         stars = new Star[STAR_COUNT];
         for (int i = 0; i < stars.length; i++) {
@@ -45,6 +53,7 @@ public class GameScreen extends BaseScreen {
         }
         bulletPool = new BulletPool();
         mainShip = new MainShip(atlasMain, bulletPool);
+
 
     }
 
@@ -54,6 +63,7 @@ public class GameScreen extends BaseScreen {
         update(delta);
         freeAllDestroyed();
         draw();
+
     }
 
     @Override
@@ -74,6 +84,8 @@ public class GameScreen extends BaseScreen {
         atlas.dispose();
         atlasMain.dispose();
         bulletPool.dispose();
+        shootSound.dispose();
+        theme.dispose();
 
     }
 
@@ -107,13 +119,13 @@ public class GameScreen extends BaseScreen {
         }
         mainShip.update(delta);
         bulletPool.updateActiveSprites(delta);
+        theme.play();
     }
     private void freeAllDestroyed(){
         bulletPool.freeAllDestroyedActiveSprites();
     }
     private void  draw(){
         batch.begin();
-       //batch.enableBlending();
         background.draw(batch);
         for (Star star: stars) {
             star.draw(batch);

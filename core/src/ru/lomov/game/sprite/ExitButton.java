@@ -1,6 +1,7 @@
 package ru.lomov.game.sprite;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -20,10 +21,8 @@ public class ExitButton extends BaseButton {
     public void resize(Rect worldBounds) {
         setHeightProportion(0.1f);
         setTop(worldBounds.getTop() - 0.02f);
-        setLeft(worldBounds.getLeft()+ PADDING);
-
+        setLeft(worldBounds.getLeft() + PADDING);
     }
-
 
     @Override
     public void action() {
