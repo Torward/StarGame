@@ -1,0 +1,19 @@
+
+mainAtlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+hero_ship
+  rotate: false
+  xy: 1, 1
+  size: 115, 70
+  orig: 115, 70
+  offset: 0, 0
+  index: -1
+ullet_green
+  rotate: false
+  xy: 118, 7
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
