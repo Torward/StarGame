@@ -3,17 +3,45 @@ mainAtlas.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+enemy_big
+  rotate: false
+  xy: 1, 39
+  size: 145, 86
+  orig: 145, 86
+  offset: 0, 0
+  index: -1
+enemy_medium
+  rotate: false
+  xy: 148, 53
+  size: 150, 72
+  orig: 150, 72
+  offset: 0, 0
+  index: -1
 hero_ship
   rotate: false
-  xy: 1, 1
+  xy: 300, 55
   size: 115, 70
   orig: 115, 70
   offset: 0, 0
   index: -1
 ullet_green
   rotate: false
-  xy: 118, 7
+  xy: 417, 61
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+enemy_small
+  rotate: false
+  xy: 148, 4
+  size: 100, 47
+  orig: 100, 47
+  offset: 0, 0
+  index: -1
+bullet_gold
+  rotate: false
+  xy: 1, 1
+  size: 36, 36
+  orig: 36, 36
   offset: 0, 0
   index: -1
