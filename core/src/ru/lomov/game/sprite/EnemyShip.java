@@ -64,4 +64,12 @@ public class EnemyShip extends Ship {
       bulletPos1.set(pos.x + getHalfWidth() - 0.006f, pos.y + 0.007f);
       bulletPos2.set(pos.x - getHalfWidth() + 0.028f, pos.y + 0.007f);
    }
+   public boolean isBulletCollision(Bullet bullet){
+         return !(
+                 bullet.getRight() < getLeft()
+                 || bullet.getLeft()> getRight()
+                 || bullet.getBottom() > getTop()
+                 || bullet.getTop() < pos.y
+                 );
+   }
 }
