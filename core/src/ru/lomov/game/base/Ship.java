@@ -9,7 +9,7 @@ import ru.lomov.game.math.Rect;
 import ru.lomov.game.pool.BulletPool;
 import ru.lomov.game.sprite.Bullet;
 
-public class Ship extends Sprite{
+public class Ship extends Sprite {
 //    protected SpriteBatch batch;
 //    protected TextureRegion region;
 //    protected float scaleX;
@@ -65,11 +65,20 @@ public class Ship extends Sprite{
         super.update(delta);
         pos.mulAdd(vel, delta);
         reloadTimer += delta;
-        if (reloadTimer>= reloadInterval){
+        if (reloadTimer >= reloadInterval) {
             reloadTimer = 0f;
             shoot();
         }
     }
+
+    public void damage(int damage) {
+        hp -= damage;
+        if (hp <= 0) {
+            hp = 0;
+            destroy();
+        }
+    }
+
     private void shoot() {
         Bullet bullet1 = bulletPool.obtain();
         Bullet bullet2 = bulletPool.obtain();
